@@ -10,6 +10,7 @@ import rootReducer from './Reducers';
 
 //importing components fro routing
 import Home from './Components/Home'
+import Profile from './Components/Profile'
 
 //creating redux store
 const store = createStore(
@@ -23,6 +24,7 @@ ReactDOM.render(
 
       <div>
         <Route exact path="/" component={Home}/>
+        <Route path="/profile" component={Profile}/>
       </div>
 
     </Router>

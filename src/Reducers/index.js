@@ -1,22 +1,9 @@
+import { combineReducers } from 'redux';
 
-const initialState = [
-  {
-    name: 'Jacek',
-    carrots: '5'
-  },
-  {
-    name: 'Adam',
-    carrots: '10'
-  }
-]
+import Hares from './HareReducer'
 
-const users = (state = initialState, action) => {
-  switch (action.type) {
+const rootReducer = combineReducers({
+    Hares
+});
 
-    default:
-      return state
-
-  }
-}
-
-export default users
+export default rootReducer;

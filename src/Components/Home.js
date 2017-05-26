@@ -16,9 +16,9 @@ class Home extends Component {
   render() {
     return (
       <div className="container">
-        <h1 className="Title">Krolestwo Zajecy</h1>
+        <h1 className="Title">Kingdom of Hares</h1>
 
-        <button className="btn btn-primary Btn-add" onClick={() => this.setState({toggle: !this.state.toggle})}>Add Zajec</button>
+        <button className="btn btn-primary Btn-add" onClick={() => this.setState({toggle: !this.state.toggle})}>Add Hare</button>
 
         { this.state.toggle ? <AddProfile /> : null }
 

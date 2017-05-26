@@ -1,20 +1,38 @@
-import React from 'react'
+import React,{ Component } from 'react'
+import { connect } from 'react-redux'
+import { addHareProfile } from '../Actions'
 import '../Styles/App.css'
 
-const AddProfile = () => {
-  return(
-    <div>
-      <div className="input-group Add-profile">
-        <input className="form-control" type="text" placeholder="Name" />
-      </div>
-      <div className="input-group Add-profile">
-        <input className="form-control" type="text" style={{marginTop: '10px'}} placeholder="Amount of carrots" />
-      </div>
+class AddProfile extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      name: '',
+      carrots: ''
+    }
+  }
 
-      <button className="btn btn-success" style={{marginTop: '10px', marginBottom: '10px'}}>Add</button>
+  addHare() {
+    const { name, carrots } = this.state
+    const parsedCarrots = parseInt(carrots, 10)
+    this.props.addHareProfile(name, parsedCarrots)
+  }
 
-    </div>
-  )
+  render() {
+    return(
+      <div>
+        <div className="input-group Add-profile">
+          <input className="form-control" type="text" placeholder="Name" onChange={event => this.setState({name: event.target.value})} />
+        </div>
+        <div className="input-group Add-profile">
+          <input className="form-control" type="text" style={{marginTop: '10px'}} placeholder="Amount of carrots" onChange={event => this.setState({carrots: event.target.value})} />
+        </div>
+
+        <button className="btn btn-success" style={{marginTop: '10px', marginBottom: '10px'}} onClick={() => this.addHare()} >Add</button>
+
+      </div>
+    )
+  }
 }
 
-export default AddProfile
+export default connect(null, { addHareProfile })(AddProfile);

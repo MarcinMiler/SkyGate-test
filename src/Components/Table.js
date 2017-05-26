@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 //importing icons
 import FaUser from 'react-icons/lib/fa/user'
 
@@ -10,10 +11,10 @@ class Table extends Component {
     const listOfUsers = this.props.users.map((user, i) => {
       return(
         <tr key={i}>
-          <th scope="row">1</th>
+          <th scope="row">{ i + 1 }</th>
           <td>{ user.name }</td>
           <td>{ user.carrots }</td>
-          <td><FaUser className="Icon-user" /></td>
+          <td><Link to='/profile'><FaUser className="Icon-user" onClick={() => this.selectUser()} /></Link></td>
         </tr>
       )
     })
@@ -38,7 +39,7 @@ class Table extends Component {
 
 function mapStateToProps(state) {
   return {
-    users: state
+    users: state.Hares
   }
 }
 
