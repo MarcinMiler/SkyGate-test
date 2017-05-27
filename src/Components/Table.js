@@ -1,10 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import  { selectHare } from '../Actions'
 //importing icons
 import FaUser from 'react-icons/lib/fa/user'
 
 class Table extends Component {
+
+  selectHare(name, carrots, id) {
+    this.props.selectHare(name, carrots, id)
+  }
+
   render() {
     console.log(this.props)
 
@@ -14,7 +20,7 @@ class Table extends Component {
           <th scope="row">{ i + 1 }</th>
           <td>{ user.name }</td>
           <td>{ user.carrots }</td>
-          <td><Link to='/profile'><FaUser className="Icon-user" onClick={() => this.selectUser()} /></Link></td>
+          <td><Link to='/profile'><FaUser className="Icon-user" onClick={() => this.selectHare(user.name, user.carrots, user.id)} /></Link></td>
         </tr>
       )
     })
@@ -37,10 +43,10 @@ class Table extends Component {
   }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
-    users: state.Hares
+    users: state.hares,
   }
 }
 
-export default connect(mapStateToProps, null)(Table);
+export default connect(mapStateToProps, { selectHare })(Table);

@@ -13,13 +13,18 @@ const initialState = [
   }
 ]
 
+const removeByID = (state = [], id ) => {
+  const hares = state.filter(hare => hare.id !== id);
+  return hares;
+}
+
 const hare = (state = {}, action) => {
   switch (action.type) {
-    case 'ADD_HARE_PROFILE':
+    case 'ADD_HARE':
       return {
         name: action.name,
         carrots: action.carrots,
-        id: uniqid()
+        id: uniqid
       }
 
     default:
@@ -29,13 +34,18 @@ const hare = (state = {}, action) => {
 }
 
 const hares = (state = initialState, action) => {
+  let hares = null
   switch (action.type) {
-
-    case 'ADD_HARE_PROFILE':
+    case 'ADD_HARE':
       return [
         ...state,
         hare(undefined, action)
       ]
+
+    case 'DELETE_HARE':
+        hares = removeByID(state, action.id)
+        return hares
+
 
     default:
       return state

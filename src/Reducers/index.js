@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 
-import Hares from './HareReducer'
+import hares from './HareReducer'
+import selectedHare from './selectedHareReducer'
 
 const rootReducer = combineReducers({
-    Hares
+    hares,
+    selectedHare
 });
 
 export default rootReducer;

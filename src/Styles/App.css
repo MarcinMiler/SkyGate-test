@@ -37,3 +37,41 @@ td {
 .Input {
   margin-top: 10px;
 }
+
+.Profile p {
+  font-size: 22px;
+}
+
+.Profile-img {
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  border: 1px solid black;
+  float: left;
+}
+
+.Profile-info {
+  margin: 20px 0 0 20px;
+  float: left;
+}
+
+.Add-carots {
+  margin-top: 30px;
+}
+
+.Add-carots button {
+  margin: 5px 5px 5px 0;
+}
+
+.Add-carots input {
+  display: block !important;
+  width: 80px;
+  margin: 0 auto 0 auto;
+  display: inline;
+  text-align: center;
+}
+
+.Input-group {
+  width: 260px;
+  margin: 0 auto 0 auto;
+}

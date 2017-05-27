@@ -1,13 +1,87 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { deleteHare } from '../Actions'
 
 class Profile extends Component {
+
+  deleteHare() {
+    this.props.deleteHare(this.props.hare.id)
+  }
+
   render() {
+    console.log(this.props)
+    const { name, carrots } = this.props.hare
+
     return(
       <div className="container">
-        Profile
+        <h1 className="Title">Hare Profile</h1>
+
+        <div className="row">
+          <div className="col-md-6 Profile">
+            <div className="Profile-img">
+
+            </div>
+            <div className="Profile-info">
+              <p>Name: { name }</p>
+              <p>Carrots: { carrots }</p>
+            </div>
+          </div>
+
+
+
+        </div>
+
+        <div className="col-md-12 Add-carots">
+          <h5 className="text-center">Add/Delete carrots</h5>
+
+          <div className="row">
+            <div className="col-md-5">
+              <div className="Input-group">
+                <button className="btn btn-danger btn-sm">-1</button>
+                <button className="btn btn-danger btn-sm">-2</button>
+                <button className="btn btn-danger btn-sm">-5</button>
+                <button className="btn btn-danger btn-sm">-10</button>
+                <button className="btn btn-danger btn-sm">-20</button>
+                <button className="btn btn-danger btn-sm">-50</button>
+              </div>
+            </div>
+
+            <div className="col-md-2">
+              <input className="form-control" type="text" value="0" readonly />
+            </div>
+
+            <div className="col-md-5">
+              <div className="Input-group">
+                <button className="btn btn-success btn-sm">+1</button>
+                <button className="btn btn-success btn-sm">+2</button>
+                <button className="btn btn-success btn-sm">+5</button>
+                <button className="btn btn-success btn-sm">+10</button>
+                <button className="btn btn-success btn-sm">+20</button>
+                <button className="btn btn-success btn-sm">+50</button>
+              </div>
+
+            </div>
+
+            <Link to='/' className="btn btn-primary"
+              style={{marginTop: '30px', marginLeft: 'auto', marginRight: 'auto'}}
+              onClick={() => this.deleteHare()}
+            >Delete Hare</Link>
+
+          </div>
+
+        </div>
+
+
       </div>
     )
   }
 }
 
-export default Profile
+const mapStateToProps = (state) => {
+  return {
+    hare: state.selectedHare
+  }
+}
+
+export default connect(mapStateToProps, { deleteHare })(Profile);

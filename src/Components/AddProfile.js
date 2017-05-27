@@ -1,6 +1,6 @@
 import React,{ Component } from 'react'
 import { connect } from 'react-redux'
-import { addHareProfile } from '../Actions'
+import { addHare } from '../Actions'
 import '../Styles/App.css'
 
 class AddProfile extends Component {
@@ -15,7 +15,7 @@ class AddProfile extends Component {
   addHare() {
     const { name, carrots } = this.state
     const parsedCarrots = parseInt(carrots, 10)
-    this.props.addHareProfile(name, parsedCarrots)
+    this.props.addHare(name, parsedCarrots)
   }
 
   render() {
@@ -35,4 +35,4 @@ class AddProfile extends Component {
   }
 }
 
-export default connect(null, { addHareProfile })(AddProfile);
+export default connect(null, { addHare })(AddProfile);

@@ -1,6 +1,18 @@
 
-export const addHareProfile = (name, carrots) => ({
-  type: 'ADD_HARE_PROFILE',
+export const addHare = (name, carrots) => ({
+  type: 'ADD_HARE',
   name,
   carrots
+})
+
+export const deleteHare = (id) => ({
+  type: 'DELETE_HARE',
+  id
+})
+
+export const selectHare = (name, carrots, id) => ({
+  type: 'SELECT_HARE',
+  name,
+  carrots,
+  id
 })
