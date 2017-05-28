@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { deleteHare } from '../Actions'
+import { deleteHare, addCarrots } from '../Actions'
 
 class Profile extends Component {
 
   deleteHare() {
     this.props.deleteHare(this.props.hare.id)
+  }
+
+  addCarrots(carrots) {
+    this.props.addCarrots(carrots, this.props.hare.id)
   }
 
   render() {
@@ -38,27 +42,27 @@ class Profile extends Component {
           <div className="row">
             <div className="col-md-5">
               <div className="Input-group">
-                <button className="btn btn-danger btn-sm">-1</button>
-                <button className="btn btn-danger btn-sm">-2</button>
-                <button className="btn btn-danger btn-sm">-5</button>
-                <button className="btn btn-danger btn-sm">-10</button>
-                <button className="btn btn-danger btn-sm">-20</button>
-                <button className="btn btn-danger btn-sm">-50</button>
+                <button className="btn btn-danger btn-sm" onClick={() => this.addCarrots(-1)}>-1</button>
+                <button className="btn btn-danger btn-sm" onClick={() => this.addCarrots(-2)}>-2</button>
+                <button className="btn btn-danger btn-sm" onClick={() => this.addCarrots(-5)}>-5</button>
+                <button className="btn btn-danger btn-sm" onClick={() => this.addCarrots(-10)}>-10</button>
+                <button className="btn btn-danger btn-sm" onClick={() => this.addCarrots(-20)}>-20</button>
+                <button className="btn btn-danger btn-sm" onClick={() => this.addCarrots(-50)}>-50</button>
               </div>
             </div>
 
             <div className="col-md-2">
-              <input className="form-control" type="text" value="0" readonly />
+              <input className="form-control" type="text" value="0" readOnly />
             </div>
 
             <div className="col-md-5">
               <div className="Input-group">
-                <button className="btn btn-success btn-sm">+1</button>
-                <button className="btn btn-success btn-sm">+2</button>
-                <button className="btn btn-success btn-sm">+5</button>
-                <button className="btn btn-success btn-sm">+10</button>
-                <button className="btn btn-success btn-sm">+20</button>
-                <button className="btn btn-success btn-sm">+50</button>
+                <button className="btn btn-success btn-sm" onClick={() => this.addCarrots(1)}>+1</button>
+                <button className="btn btn-success btn-sm" onClick={() => this.addCarrots(2)}>+2</button>
+                <button className="btn btn-success btn-sm" onClick={() => this.addCarrots(5)}>+5</button>
+                <button className="btn btn-success btn-sm" onClick={() => this.addCarrots(10)}>+10</button>
+                <button className="btn btn-success btn-sm" onClick={() => this.addCarrots(20)}>+20</button>
+                <button className="btn btn-success btn-sm" onClick={() => this.addCarrots(50)}>+50</button>
               </div>
 
             </div>
@@ -84,4 +88,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { deleteHare })(Profile);
+export default connect(mapStateToProps, { deleteHare, addCarrots })(Profile);

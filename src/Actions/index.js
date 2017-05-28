@@ -16,3 +16,9 @@ export const selectHare = (name, carrots, id) => ({
   carrots,
   id
 })
+
+export const addCarrots = (carrots, id) => ({
+  type: 'ADD_CARROTS',
+  carrots,
+  id
+})

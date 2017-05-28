@@ -13,9 +13,14 @@ const initialState = [
   }
 ]
 
-const removeByID = (state = [], id ) => {
-  const hares = state.filter(hare => hare.id !== id);
-  return hares;
+const removeByID = (state = [], id) => {
+  const hares = state.filter(hare => hare.id !== id)
+  return hares
+}
+
+const findByID = (state = [], id, carrots) => {
+  const hare = state.filter(hare => hare.id === id ? hare.carrots += carrots : hare)
+  return hare
 }
 
 const hare = (state = {}, action) => {
@@ -24,7 +29,7 @@ const hare = (state = {}, action) => {
       return {
         name: action.name,
         carrots: action.carrots,
-        id: uniqid
+        id: uniqid()
       }
 
     default:
@@ -43,9 +48,12 @@ const hares = (state = initialState, action) => {
       ]
 
     case 'DELETE_HARE':
-        hares = removeByID(state, action.id)
-        return hares
+      hares = removeByID(state, action.id)
+      return hares
 
+    case 'ADD_CARROTS':
+      hares = findByID(state, action.id, action.carrots)
+      return hares
 
     default:
       return state
