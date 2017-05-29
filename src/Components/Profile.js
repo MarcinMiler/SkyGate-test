@@ -4,6 +4,12 @@ import { Link } from 'react-router-dom'
 import { deleteHare, addCarrots } from '../Actions'
 
 class Profile extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      payload: 0
+    }
+  }
 
   deleteHare() {
     this.props.deleteHare(this.props.hare.id)
@@ -11,6 +17,7 @@ class Profile extends Component {
 
   addCarrots(carrots) {
     this.props.addCarrots(carrots, this.props.hare.id)
+    this.setState({payload: this.state.payload + carrots})
   }
 
   render() {
@@ -52,7 +59,7 @@ class Profile extends Component {
             </div>
 
             <div className="col-md-2">
-              <input className="form-control" type="text" value="0" readOnly />
+              <input className="form-control" type="text" value={this.state.payload} readOnly />
             </div>
 
             <div className="col-md-5">

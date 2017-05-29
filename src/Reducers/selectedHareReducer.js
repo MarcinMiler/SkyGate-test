@@ -10,6 +10,9 @@ const selectedHare = (state = initialState , action) => {
     case 'SELECT_HARE':
       return Object.assign({}, state, { name: action.name, carrots: action.carrots, id: action.id })
 
+    case 'ADD_CARROTS':
+      return Object.assign({}, state, { carrots: state.carrots + action.carrots })
+
     default:
       return state
   }
