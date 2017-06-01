@@ -10,7 +10,38 @@ const initialState = [
     name: 'Adam',
     carrots: 10,
     id: 2
-  }
+  },
+  {
+    name: 'Andzia',
+    carrots: 15,
+    id: 1
+  },
+  {
+    name: 'Marcin',
+    carrots: 12,
+    id: 1
+  },
+  {
+    name: 'Patrys',
+    carrots: 7,
+    id: 1
+  },
+  {
+    name: 'Krystian',
+    carrots: 1,
+    id: 1
+  },
+  {
+    name: 'Rafal',
+    carrots: 2,
+    id: 1
+  },
+  {
+    name: 'Dominik',
+    carrots: 19,
+    id: 1
+  },
+
 ]
 
 const removeByID = (state = [], id) => {
@@ -54,6 +85,53 @@ const hares = (state = initialState, action) => {
     case 'ADD_CARROTS':
       hares = findByID(state, action.id, action.carrots)
       return hares
+
+    case 'SORT':
+      let min = state[0].carrots
+      let max = state[0].carrots
+
+      for(let i = 1; i < state.length; i++) {
+        if(state[i].carrots < min) {
+          min = state[i].carrots
+        }
+        if(state[i].carrots > max) {
+          max = state[i].carrots
+        }
+      }
+
+      let count = []
+      let arr = []
+      let names = []
+      let i
+      let x
+
+      for(i=0;i<state.length; i++) {
+        arr[i] = state[i].carrots
+        names[i] = state[i].name
+      }
+
+      for(i = 0; i <= max; i++) {
+        count[i] = 0
+      }
+
+      for(i = 0; i < state.length; i++) {
+        count[state[i].carrots]++
+      }
+
+      for(i = 0; i < max; i++) {
+        count[i+1] += count[i]
+      }
+
+
+      for(i = 0; i < state.length; i++) {
+        x = count[arr[i]]
+        state[x-1].carrots = arr[i]
+        state[x-1].name = names[i]
+      }
+
+
+
+      return state
 
     default:
       return state

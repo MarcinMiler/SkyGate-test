@@ -22,3 +22,14 @@ export const addCarrots = (carrots, id) => ({
   carrots,
   id
 })
+
+export const sort = () => ({
+  type: 'SORT',
+})
+
+// export const addHareAndSort = (name, carrots) => {
+//   return dispatch => {
+//     dispatch(addHare(name, carrots))
+//     dispatch(sort())
+//   }
+// }

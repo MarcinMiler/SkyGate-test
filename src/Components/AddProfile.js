@@ -18,6 +18,14 @@ class AddProfile extends Component {
     this.props.addHare(name, parsedCarrots)
   }
 
+  hardTest() {
+    for(let i = 0; i < 20000; i++) {
+      let c = Math.floor(Math.random() * 10000)
+      this.props.addHare('lul', c)
+    }
+    this.forceUpdate()
+  }
+
   render() {
     return(
       <div>
@@ -29,6 +37,7 @@ class AddProfile extends Component {
         </div>
 
         <button className="btn btn-success" style={{marginTop: '10px', marginBottom: '10px'}} onClick={() => this.addHare()} >Add</button>
+        <button className="btn btn-success" style={{marginTop: '10px', marginBottom: '10px'}} onClick={() => this.hardTest()} >Hard test</button>
 
       </div>
     )
