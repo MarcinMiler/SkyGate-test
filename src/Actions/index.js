@@ -27,9 +27,9 @@ export const sort = () => ({
   type: 'SORT',
 })
 
-// export const addHareAndSort = (name, carrots) => {
-//   return dispatch => {
-//     dispatch(addHare(name, carrots))
-//     dispatch(sort())
-//   }
-// }
+export const addHareAndSort = (name, carrots) => {
+  return dispatch => {
+    dispatch(addHare(name, carrots))
+    dispatch(sort())
+  }
+}

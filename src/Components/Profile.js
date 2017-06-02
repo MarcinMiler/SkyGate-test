@@ -7,7 +7,8 @@ class Profile extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      payload: 0
+      payload: 0,
+      message: ''
     }
   }
 
@@ -16,12 +17,16 @@ class Profile extends Component {
   }
 
   addCarrots(carrots) {
-    this.props.addCarrots(carrots, this.props.hare.id)
-    this.setState({payload: this.state.payload + carrots})
+    if((this.props.hare.carrots + carrots) >= 0) {
+      this.props.addCarrots(carrots, this.props.hare.id)
+      this.setState({payload: this.state.payload + carrots, message: ''})
+    } else {
+      this.setState({message: 'Number of carrots must be positive'})
+    }
+
   }
 
   render() {
-    console.log(this.props)
     const { name, carrots } = this.props.hare
 
     return(
@@ -38,9 +43,9 @@ class Profile extends Component {
               <p>Carrots: { carrots }</p>
             </div>
           </div>
-
-
-
+          <div className="col-md-6">
+            { this.state.message.length > 0 ? <div className="alert alert-warning" role="alert"> { this.state.message } </div> : null }
+          </div>
         </div>
 
         <div className="col-md-12 Add-carots">

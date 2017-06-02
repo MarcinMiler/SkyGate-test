@@ -11,13 +11,11 @@ class Table extends Component {
     this.props.selectHare(name, carrots, id)
   }
 
-  sort() {
+  componentWillMount() {
     this.props.sort()
-    this.forceUpdate()
   }
 
   render() {
-    console.log(this.props)
 
     const listOfUsers = this.props.users.map((user, i) => {
       return(
@@ -32,7 +30,6 @@ class Table extends Component {
 
     return(
       <div>
-        <button className="btn btn-primary" onClick={() => this.sort()}>Sort</button>
         <table className="table table-striped">
           <thead>
             <tr>
