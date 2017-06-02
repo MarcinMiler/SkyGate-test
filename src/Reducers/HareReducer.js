@@ -1,4 +1,3 @@
-import uniqid from 'uniqid'
 import initialState from '../FakeAPI/FakeAPI'
 
 const removeByID = (state = [], id) => {
@@ -12,17 +11,17 @@ const findByID = (state = [], id, carrots) => {
 }
 
 const hare = (state = {}, action) => {
+  let uniqid = 200
   switch (action.type) {
     case 'ADD_HARE':
       return {
         name: action.name,
         carrots: action.carrots,
-        id: uniqid()
+        id: uniqid + 1
       }
 
     default:
       return state
-
   }
 }
 
