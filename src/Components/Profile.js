@@ -94,6 +94,7 @@ class Profile extends Component {
   }
 }
 
+//giving data to component
 const mapStateToProps = (state) => {
   return {
     hare: state.selectedHare

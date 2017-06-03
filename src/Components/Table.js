@@ -1,29 +1,31 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+//importing actions
 import  { selectHare, sort } from '../Actions'
 //importing icons
 import FaUser from 'react-icons/lib/fa/user'
 
 class Table extends Component {
 
+  //selectedHare to display on Profile component
   selectHare(name, carrots, id) {
     this.props.selectHare(name, carrots, id)
   }
-
+  //sorting table when component will apear
   componentWillMount() {
     this.props.sort()
   }
 
   render() {
-
-    const listOfUsers = this.props.users.map((user, i) => {
+    //create a table of hares
+    const listOfHares = this.props.hares.map((hare, i) => {
       return(
         <tr key={i}>
           <th scope="row">{ i + 1 }</th>
-          <td>{ user.name }</td>
-          <td>{ user.carrots }</td>
-          <td><Link to='/profile'><FaUser className="Icon-user" onClick={() => this.selectHare(user.name, user.carrots, user.id)} /></Link></td>
+          <td>{ hare.name }</td>
+          <td>{ hare.carrots }</td>
+          <td><Link to='/profile'><FaUser className="Icon-user" onClick={() => this.selectHare(hare.name, hare.carrots, hare.id)} /></Link></td>
         </tr>
       )
     })
@@ -40,7 +42,8 @@ class Table extends Component {
             </tr>
           </thead>
           <tbody>
-            { listOfUsers }
+            {/* rendering table of hares */}
+            { listOfHares }
           </tbody>
         </table>
       </div>
@@ -48,9 +51,10 @@ class Table extends Component {
   }
 }
 
+//giving data to component
 const mapStateToProps = (state) => {
   return {
-    users: state.hares,
+    hares: state.hares,
   }
 }
 

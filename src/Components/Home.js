@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+//importing components
 import AddProfile from './AddProfile'
 import Table from './Table'
 
@@ -20,6 +21,7 @@ class Home extends Component {
 
         <button className="btn btn-primary Btn-add" onClick={() => this.setState({toggle: !this.state.toggle})}>Add Hare</button>
 
+        {/* Toggle AddProfile component */}
         { this.state.toggle ? <AddProfile /> : null }
 
         <Table />

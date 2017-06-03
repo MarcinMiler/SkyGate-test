@@ -1,6 +1,8 @@
 import React,{ Component } from 'react'
 import { connect } from 'react-redux'
+//importing actions
 import { addHareAndSort } from '../Actions'
+
 import '../Styles/App.css'
 
 class AddProfile extends Component {

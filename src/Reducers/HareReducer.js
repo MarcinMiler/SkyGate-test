@@ -1,10 +1,12 @@
 import initialState from '../FakeAPI/FakeAPI'
 
+//find hare with id equal to action.id and delete hare
 const removeByID = (state = [], id) => {
   const hares = state.filter(hare => hare.id !== id)
   return hares
 }
 
+//find hare with id equal to action.id and add carrots to profile
 const findByID = (state = [], id, carrots) => {
   const hare = state.filter(hare => hare.id === id ? hare.carrots += carrots : hare)
   return hare
@@ -43,6 +45,11 @@ const hares = (state = initialState, action) => {
       return hares
 
     case 'SORT':
+
+    //My implementation of 'counting sort' which sort carrots and names, but if in the array is two the same numbers algorithm breaks,
+    //I implement algorithm who proper sort the array, but it cant sort names too,
+    //this algorithm sort proper when in the array is no duplicate numbers of carrots
+
       // let min = state[0].carrots
       // let max = state[0].carrots
       //
@@ -85,6 +92,7 @@ const hares = (state = initialState, action) => {
       //   state[x-1].name = names[i]
       // }
 
+      //This sorting works
       state.sort((a, b) => {
         if (a.carrots > b.carrots)
           return -1
